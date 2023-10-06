@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "rating": 5,
+    "title": "The Lord of the Rings",
+    "author": "J. R. R. Tolkien",
+    "url": "https://www.goodreads.com/book/show/1.The_Lord_of_the_Rings",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/51Zr5xqGpML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+  },
+  {
+    "id": 2,
+    "rating": 3,
+    "title": "Harry Potter",
+    "author": "J. K. Rowling",
+    "url": "https://www.goodreads.com/book/show/1.Harry_Potter",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/51Zr5xqGpML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+  },
+  {
+    "id": 3,
+    "rating": 5,
+    "title": "Star Wars",
+    "author": "George Lucas",
+    "url": "https://www.goodreads.com/book/show/1.Star_Wars",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/51Zr5xqGpML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+  },
+  {
+    "id": 4,
+    "rating": 5,
+    "title": "Game of Thrones",
+    "author": "George R. R. Martin",
+    "url": "https://www.goodreads.com/book/show/1.Game_of_Thrones",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/51Zr5xqGpML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+  },
+  {
+    "id": 5,
+    "rating": 5,
+    "title": "The Witcher",
+    "author": "Andrzej Sapkowski",
+    "url": "https://www.goodreads.com/book/show/1.The_Witcher",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/51Zr5xqGpML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+  }
+]
