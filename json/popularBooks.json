@@ -5,7 +5,7 @@
     "title": "The Lord of the Rings",
     "author": "J. R. R. Tolkien",
     "url": "https://www.goodreads.com/book/show/1.The_Lord_of_the_Rings",
-    "img": "https://images-na.ssl-images-amazon.com/images/I/51Zr5xqGpML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+    "img": "https://images.unsplash.com/photo-1624489094663-a51a6c61d492?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2765&q=80"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "title": "Harry Potter",
     "author": "J. K. Rowling",
     "url": "https://www.goodreads.com/book/show/1.Harry_Potter",
-    "img": "https://images-na.ssl-images-amazon.com/images/I/51Zr5xqGpML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+    "img": "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2938&q=80"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "title": "Star Wars",
     "author": "George Lucas",
     "url": "https://www.goodreads.com/book/show/1.Star_Wars",
-    "img": "https://images-na.ssl-images-amazon.com/images/I/51Zr5xqGpML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+    "img": "https://images.unsplash.com/photo-1621611141464-a06af0c5c623?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "title": "Game of Thrones",
     "author": "George R. R. Martin",
     "url": "https://www.goodreads.com/book/show/1.Game_of_Thrones",
-    "img": "https://images-na.ssl-images-amazon.com/images/I/51Zr5xqGpML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+    "img": "https://images.unsplash.com/photo-1515255384510-23e8b6a6ca3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80"
   },
   {
     "id": 5,
@@ -37,6 +37,6 @@
     "title": "The Witcher",
     "author": "Andrzej Sapkowski",
     "url": "https://www.goodreads.com/book/show/1.The_Witcher",
-    "img": "https://images-na.ssl-images-amazon.com/images/I/51Zr5xqGpML._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPLPg6kkACp1Dk0hGUHC9Rp8pP9WaHPFIvUyySFtXHmJVNkpDXAyXv3OtdQddzZnyOCQw&usqp=CAU"
   }
 ]
