@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ebook_app/my_tab.dart';
 import 'app_colors.dart' as AppColors;
 
 class MyHomePage extends StatefulWidget {
@@ -133,59 +134,17 @@ class _MyHomePageState extends State<MyHomePage>
                                         offset: const Offset(0, 0))
                                   ]),
                               tabs: [
-                                Container(
-                                  width: 120,
-                                  height: 50,
-                                  child: Text(
-                                    'New',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: AppColors.menu1Color,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.2),
-                                            blurRadius: 7,
-                                            offset: Offset(0, 0))
-                                      ]),
+                                AppTab(
+                                  color: AppColors.menu1Color,
+                                  text: "New",
                                 ),
-                                Container(
-                                  width: 120,
-                                  height: 50,
-                                  child: Text(
-                                    'Popular',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: AppColors.menu2Color,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.2),
-                                            blurRadius: 7,
-                                            offset: Offset(0, 0))
-                                      ]),
+                                AppTab(
+                                  color: AppColors.menu2Color,
+                                  text: "Popular",
                                 ),
-                                Container(
-                                  width: 120,
-                                  height: 50,
-                                  child: Text(
-                                    'Traning',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: AppColors.menu3Color,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.2),
-                                            blurRadius: 7,
-                                            offset: Offset(0, 0))
-                                      ]),
+                                AppTab(
+                                  color: AppColors.menu3Color,
+                                  text: "Tech",
                                 ),
                               ],
                             ))),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'app_colors.dart' as AppColors;
 
 class AppTab extends StatelessWidget {
   final Color color;
@@ -15,16 +14,16 @@ class AppTab extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: AppColors.menu2Color,
+          color: this.color,
           boxShadow: [
             BoxShadow(
                 color: Colors.grey.withOpacity(0.2),
                 blurRadius: 7,
                 offset: Offset(0, 0))
           ]),
-      child: const Text(
-        'Popular',
-        style: TextStyle(color: Colors.white),
+      child: Text(
+        this.text,
+        style: const TextStyle(color: Colors.white),
       ),
     );
   }
