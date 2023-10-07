@@ -16,6 +16,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late List popularBooks;
+  late List Books;
   ScrollController? scrollController;
   TabController? tapController;
 
@@ -23,6 +24,9 @@ class _MyHomePageState extends State<MyHomePage>
     await DefaultAssetBundle.of(context)
         .loadString('json/popularBooks.json')
         .then((value) => {setState(() => popularBooks = json.decode(value))});
+    await DefaultAssetBundle.of(context)
+        .loadString('json/books.json')
+        .then((value) => {setState(() => Books = json.decode(value))});
   }
 
   @override
@@ -88,7 +92,8 @@ class _MyHomePageState extends State<MyHomePage>
                       height: 180,
                       child: PageView.builder(
                           controller: PageController(viewportFraction: 0.8),
-                          itemCount: popularBooks.length,
+                          itemCount:
+                              popularBooks == null ? 0 : popularBooks.length,
                           itemBuilder: (_, i) {
                             return Container(
                               height: 100,
@@ -133,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage>
                                         blurRadius: 7,
                                         offset: const Offset(0, 0))
                                   ]),
-                              tabs: [
+                              tabs: const [
                                 AppTab(
                                   color: AppColors.menu1Color,
                                   text: "New",
@@ -151,20 +156,104 @@ class _MyHomePageState extends State<MyHomePage>
                   )
                 ];
               },
-              body: TabBarView(controller: tapController, children: const [
-                Material(
+              body: TabBarView(controller: tapController, children: [
+                ListView.builder(
+                    itemCount: Books == null ? 0 : Books.length,
+                    itemBuilder: (_, index) {
+                      return Container(
+                        margin: const EdgeInsets.only(
+                            bottom: 10, left: 20, right: 20, top: 20),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: AppColors.tabVarViewColor,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 2,
+                                  offset: Offset(0, 0),
+                                  color: Colors.grey.withOpacity(0.2),
+                                ),
+                              ]),
+                          child: Container(
+                            padding: EdgeInsets.all(8),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 90,
+                                  height: 120,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      image: AssetImage(Books[index]["img"]),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.star,
+                                          size: 34,
+                                          color: AppColors.starColor,
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          Books[index]['rating'],
+                                          style: const TextStyle(
+                                              color: AppColors.menu2Color),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      Books[index]['title'],
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontFamily: 'Avenir',
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      Books[index]['text'],
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontFamily: 'Avenir',
+                                          color: AppColors.subTitleText),
+                                    ),
+                                    Container(
+                                      width: 60,
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: AppColors.loveColor,
+                                      ),
+                                      child: const Text(
+                                        "Love",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: 'Avenir',
+                                            color: Colors.white),
+                                      ),
+                                      alignment: Alignment.center,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                const Material(
                   child: ListTile(
                     leading: CircleAvatar(backgroundColor: Colors.grey),
                     title: Text("Contents"),
                   ),
                 ),
-                Material(
-                  child: ListTile(
-                    leading: CircleAvatar(backgroundColor: Colors.grey),
-                    title: Text("Contents"),
-                  ),
-                ),
-                Material(
+                const Material(
                   child: ListTile(
                     leading: CircleAvatar(backgroundColor: Colors.grey),
                     title: Text("Contents"),

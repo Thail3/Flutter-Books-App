@@ -1,0 +1,20 @@
+[
+  {
+    "rating": "4.6",
+    "title": "Book 1",
+    "text": "Martin Hyatt",
+    "img": "assets/book1.jpg"
+  },
+  {
+    "rating": "3.1",
+    "title": "Book 2",
+    "text": "Martin Hyatt",
+    "img": "assets/book2.jpg"
+  },
+  {
+    "rating": "5",
+    "title": "Book 3",
+    "text": "Martin Hyatt",
+    "img": "assets/book3.jpg"
+  }
+]
