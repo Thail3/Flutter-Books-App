@@ -12,8 +12,11 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   late List popularBooks;
+  ScrollController? scrollController;
+  TabController? tapController;
 
   void ReadData() async {
     await DefaultAssetBundle.of(context)
@@ -24,6 +27,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    tapController = TabController(length: 3, vsync: this);
+    scrollController = ScrollController();
     ReadData();
   }
 
@@ -101,6 +106,113 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
+            Expanded(
+                child: NestedScrollView(
+              controller: scrollController,
+              headerSliverBuilder: (context, innerBoxIsScrolled) {
+                return [
+                  SliverAppBar(
+                    pinned: true,
+                    backgroundColor: AppColors.sliverBackground,
+                    bottom: PreferredSize(
+                        preferredSize: const Size.fromHeight(50),
+                        child: Container(
+                            margin: const EdgeInsets.only(bottom: 20, left: 10),
+                            child: TabBar(
+                              indicatorPadding: const EdgeInsets.all(0),
+                              indicatorSize: TabBarIndicatorSize.label,
+                              labelPadding: const EdgeInsets.only(right: 10),
+                              controller: tapController,
+                              isScrollable: true,
+                              indicator: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.grey.withOpacity(0.2),
+                                        blurRadius: 7,
+                                        offset: const Offset(0, 0))
+                                  ]),
+                              tabs: [
+                                Container(
+                                  width: 120,
+                                  height: 50,
+                                  child: Text(
+                                    'New',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: AppColors.menu1Color,
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.grey.withOpacity(0.2),
+                                            blurRadius: 7,
+                                            offset: Offset(0, 0))
+                                      ]),
+                                ),
+                                Container(
+                                  width: 120,
+                                  height: 50,
+                                  child: Text(
+                                    'Popular',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: AppColors.menu2Color,
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.grey.withOpacity(0.2),
+                                            blurRadius: 7,
+                                            offset: Offset(0, 0))
+                                      ]),
+                                ),
+                                Container(
+                                  width: 120,
+                                  height: 50,
+                                  child: Text(
+                                    'Traning',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: AppColors.menu3Color,
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.grey.withOpacity(0.2),
+                                            blurRadius: 7,
+                                            offset: Offset(0, 0))
+                                      ]),
+                                ),
+                              ],
+                            ))),
+                  )
+                ];
+              },
+              body: TabBarView(controller: tapController, children: const [
+                Material(
+                  child: ListTile(
+                    leading: CircleAvatar(backgroundColor: Colors.grey),
+                    title: Text("Contents"),
+                  ),
+                ),
+                Material(
+                  child: ListTile(
+                    leading: CircleAvatar(backgroundColor: Colors.grey),
+                    title: Text("Contents"),
+                  ),
+                ),
+                Material(
+                  child: ListTile(
+                    leading: CircleAvatar(backgroundColor: Colors.grey),
+                    title: Text("Contents"),
+                  ),
+                )
+              ]),
+            )),
           ],
         )),
       ),
