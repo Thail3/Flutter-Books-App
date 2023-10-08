@@ -9,5 +9,5 @@ const Color tabVarViewColor = Color(0xFFfdfdfd);
 const Color starColor = Color(0xFFfdc746);
 const Color subTitleText = Color(0xFFc5c4ca);
 const Color loveColor = Color(0xFF00ace56);
-const Color audioBlueBackground = Color(0xFFeeeffa);
+const Color audioBlueBackground = Color.fromARGB(255, 28, 118, 221);
 const Color audioGreyBackground = Color(0xFFf2f2f2);
