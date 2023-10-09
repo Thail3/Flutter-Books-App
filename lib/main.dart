@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ebook_app/detail_audio.dart';
+import 'package:flutter_ebook_app/otp.dart';
 import 'my_home_page.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: const MyHomePage(),
-      home: const DetailAudio(),
+      home: OtpVerification(),
     );
   }
 }
