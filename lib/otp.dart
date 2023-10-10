@@ -151,126 +151,6 @@ class _NumericKeypadState extends State<OtpVerification> {
                       ),
                   ],
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   children: [
-                //     Container(
-                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                //       width: 50,
-                //       height: 50,
-                //       decoration: BoxDecoration(
-                //         color: const Color(0xFFF7F8F9),
-                //         border: Border.all(width: .2, color: Colors.black),
-                //         shape: BoxShape.rectangle,
-                //         borderRadius:
-                //             const BorderRadius.all(Radius.circular(10)),
-                //       ),
-                //       child: const Center(
-                //         child: Text(
-                //           '-',
-                //           style: TextStyle(
-                //               fontSize: 24, fontWeight: FontWeight.bold),
-                //         ),
-                //       ),
-                //     ),
-                //     Container(
-                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                //       width: 50,
-                //       height: 50,
-                //       decoration: BoxDecoration(
-                //         color: const Color(0xFFF7F8F9),
-                //         border: Border.all(width: .2, color: Colors.black),
-                //         shape: BoxShape.rectangle,
-                //         borderRadius:
-                //             const BorderRadius.all(Radius.circular(10)),
-                //       ),
-                //       child: const Center(
-                //         child: Text(
-                //           '-',
-                //           style: TextStyle(
-                //               fontSize: 24, fontWeight: FontWeight.bold),
-                //         ),
-                //       ),
-                //     ),
-                //     Container(
-                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                //       width: 50,
-                //       height: 50,
-                //       decoration: BoxDecoration(
-                //         color: const Color(0xFFF7F8F9),
-                //         border: Border.all(width: .2, color: Colors.black),
-                //         shape: BoxShape.rectangle,
-                //         borderRadius:
-                //             const BorderRadius.all(Radius.circular(10)),
-                //       ),
-                //       child: const Center(
-                //         child: Text(
-                //           '-',
-                //           style: TextStyle(
-                //               fontSize: 24, fontWeight: FontWeight.bold),
-                //         ),
-                //       ),
-                //     ),
-                //     Container(
-                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                //       width: 50,
-                //       height: 50,
-                //       decoration: BoxDecoration(
-                //         color: const Color(0xFFF7F8F9),
-                //         border: Border.all(width: .2, color: Colors.black),
-                //         shape: BoxShape.rectangle,
-                //         borderRadius:
-                //             const BorderRadius.all(Radius.circular(10)),
-                //       ),
-                //       child: const Center(
-                //         child: Text(
-                //           '-',
-                //           style: TextStyle(
-                //               fontSize: 24, fontWeight: FontWeight.bold),
-                //         ),
-                //       ),
-                //     ),
-                //     Container(
-                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                //       width: 50,
-                //       height: 50,
-                //       decoration: BoxDecoration(
-                //         color: const Color(0xFFF7F8F9),
-                //         border: Border.all(width: .2, color: Colors.black),
-                //         shape: BoxShape.rectangle,
-                //         borderRadius:
-                //             const BorderRadius.all(Radius.circular(10)),
-                //       ),
-                //       child: const Center(
-                //         child: Text(
-                //           '-',
-                //           style: TextStyle(
-                //               fontSize: 24, fontWeight: FontWeight.bold),
-                //         ),
-                //       ),
-                //     ),
-                //     Container(
-                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                //       width: 50,
-                //       height: 50,
-                //       decoration: BoxDecoration(
-                //         color: const Color(0xFFF7F8F9),
-                //         border: Border.all(width: .2, color: Colors.black),
-                //         shape: BoxShape.rectangle,
-                //         borderRadius:
-                //             const BorderRadius.all(Radius.circular(10)),
-                //       ),
-                //       child: const Center(
-                //         child: Text(
-                //           '-',
-                //           style: TextStyle(
-                //               fontSize: 24, fontWeight: FontWeight.bold),
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // )
               ],
             ),
 
@@ -286,19 +166,17 @@ class _NumericKeypadState extends State<OtpVerification> {
                   onTap: () {
                     print('Resend OTP pressed');
                   },
-                  child: Container(
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Resend OTP',
-                          style: TextStyle(
-                              color: Color.fromRGBO(0, 83, 158, 1.0),
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Resend OTP',
+                        style: TextStyle(
+                            color: Color.fromRGBO(0, 83, 158, 1.0),
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -307,13 +185,13 @@ class _NumericKeypadState extends State<OtpVerification> {
               height: 80,
             ),
 
-            //! NumPad ---------------------------------
+            //! NumPad
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 5),
+                  margin: const EdgeInsets.only(top: 5),
                   height: 400 * fem,
                   decoration: const BoxDecoration(
                     color: Color(0xffd1d5db),
@@ -324,12 +202,14 @@ class _NumericKeypadState extends State<OtpVerification> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         alignment: Alignment.center,
                         width: double.infinity,
                         height: 46 * fem,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
+
+                          //* Number 1 - 3
                           children: [
                             const SizedBox(
                               width: 35,
@@ -339,11 +219,11 @@ class _NumericKeypadState extends State<OtpVerification> {
                                     52 * fem, 1 * fem, 52 * fem, 1 * fem),
                                 height: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Color(0xfffcfcfe),
+                                  color: const Color(0xfffcfcfe),
                                   borderRadius: BorderRadius.circular(5 * fem),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color(0xff898a8d),
+                                      color: const Color(0xff898a8d),
                                       offset: Offset(0 * fem, 1 * fem),
                                       blurRadius: 0 * fem,
                                     ),
@@ -362,7 +242,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                       fontWeight: FontWeight.w400,
                                       height: 1.2575 * fem / fem,
                                       letterSpacing: 0.2912249863 * fem,
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                     ),
                                   ),
                                 )),
@@ -373,11 +253,11 @@ class _NumericKeypadState extends State<OtpVerification> {
                                 width: 117 * fem,
                                 height: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Color(0xfffcfcfe),
+                                  color: const Color(0xfffcfcfe),
                                   borderRadius: BorderRadius.circular(5 * fem),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color(0xff898a8d),
+                                      color: const Color(0xff898a8d),
                                       offset: Offset(0 * fem, 1 * fem),
                                       blurRadius: 0 * fem,
                                     ),
@@ -406,7 +286,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                                 height: 1.2575 * fem / fem,
                                                 letterSpacing:
                                                     0.2912249863 * fem,
-                                                color: Color(0xff000000),
+                                                color: const Color(0xff000000),
                                               ),
                                             ),
                                           ),
@@ -429,7 +309,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                                 height: 1.2575 * fem / fem,
                                                 letterSpacing:
                                                     0.2912249863 * fem,
-                                                color: Color(0xff000000),
+                                                color: const Color(0xff000000),
                                               ),
                                             ),
                                           ),
@@ -449,7 +329,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                 borderRadius: BorderRadius.circular(5 * fem),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xff898a8d),
+                                    color: const Color(0xff898a8d),
                                     offset: Offset(0 * fem, 1 * fem),
                                     blurRadius: 0 * fem,
                                   ),
@@ -478,7 +358,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -501,7 +381,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -520,11 +400,13 @@ class _NumericKeypadState extends State<OtpVerification> {
                       SizedBox(
                         height: 7 * fem,
                       ),
-                      Container(
+                      SizedBox(
                         width: double.infinity,
                         height: 46 * fem,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
+
+                          //* Number 4 - 6
                           children: [
                             const SizedBox(
                               width: 35,
@@ -533,11 +415,11 @@ class _NumericKeypadState extends State<OtpVerification> {
                               width: 117 * fem,
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color(0xfffcfcfe),
+                                color: const Color(0xfffcfcfe),
                                 borderRadius: BorderRadius.circular(5 * fem),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xff898a8d),
+                                    color: const Color(0xff898a8d),
                                     offset: Offset(0 * fem, 1 * fem),
                                     blurRadius: 0 * fem,
                                   ),
@@ -566,7 +448,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -589,7 +471,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -606,11 +488,11 @@ class _NumericKeypadState extends State<OtpVerification> {
                               width: 117 * fem,
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color(0xfffcfcfe),
+                                color: const Color(0xfffcfcfe),
                                 borderRadius: BorderRadius.circular(5 * fem),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xff898a8d),
+                                    color: const Color(0xff898a8d),
                                     offset: Offset(0 * fem, 1 * fem),
                                     blurRadius: 0 * fem,
                                   ),
@@ -639,7 +521,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -662,7 +544,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -679,11 +561,11 @@ class _NumericKeypadState extends State<OtpVerification> {
                               width: 117 * fem,
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color(0xfffcfcfe),
+                                color: const Color(0xfffcfcfe),
                                 borderRadius: BorderRadius.circular(5 * fem),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xff898a8d),
+                                    color: const Color(0xff898a8d),
                                     offset: Offset(0 * fem, 1 * fem),
                                     blurRadius: 0 * fem,
                                   ),
@@ -713,7 +595,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -736,7 +618,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -755,11 +637,13 @@ class _NumericKeypadState extends State<OtpVerification> {
                       SizedBox(
                         height: 7 * fem,
                       ),
-                      Container(
+                      SizedBox(
                         width: double.infinity,
                         height: 47 * fem,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
+
+                          //* Number 7 - 9
                           children: [
                             const SizedBox(
                               width: 35,
@@ -768,11 +652,11 @@ class _NumericKeypadState extends State<OtpVerification> {
                               width: 117 * fem,
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color(0xfffcfcfe),
+                                color: const Color(0xfffcfcfe),
                                 borderRadius: BorderRadius.circular(5 * fem),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xff898a8d),
+                                    color: const Color(0xff898a8d),
                                     offset: Offset(0 * fem, 1 * fem),
                                     blurRadius: 0 * fem,
                                   ),
@@ -801,7 +685,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -824,7 +708,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -841,11 +725,11 @@ class _NumericKeypadState extends State<OtpVerification> {
                               width: 117 * fem,
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color(0xfffcfcfe),
+                                color: const Color(0xfffcfcfe),
                                 borderRadius: BorderRadius.circular(5 * fem),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xff898a8d),
+                                    color: const Color(0xff898a8d),
                                     offset: Offset(0 * fem, 1 * fem),
                                     blurRadius: 0 * fem,
                                   ),
@@ -874,7 +758,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -897,7 +781,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -914,11 +798,11 @@ class _NumericKeypadState extends State<OtpVerification> {
                               width: 117 * fem,
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color(0xfffcfcfe),
+                                color: const Color(0xfffcfcfe),
                                 borderRadius: BorderRadius.circular(5 * fem),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xff898a8d),
+                                    color: const Color(0xff898a8d),
                                     offset: Offset(0 * fem, 1 * fem),
                                     blurRadius: 0 * fem,
                                   ),
@@ -948,7 +832,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -971,7 +855,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                               fontWeight: FontWeight.w400,
                                               height: 1.2575 * fem / fem,
                                               letterSpacing: 0.2912249863 * fem,
-                                              color: Color(0xff000000),
+                                              color: const Color(0xff000000),
                                             ),
                                           ),
                                         ),
@@ -997,6 +881,8 @@ class _NumericKeypadState extends State<OtpVerification> {
                         height: 46 * fem,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
+
+                          //* Number 0 and Icon delete
                           children: [
                             Container(
                               margin: EdgeInsets.fromLTRB(
@@ -1004,11 +890,11 @@ class _NumericKeypadState extends State<OtpVerification> {
                               width: 117 * fem,
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color(0xfffcfcfe),
+                                color: const Color(0xfffcfcfe),
                                 borderRadius: BorderRadius.circular(5 * fem),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xff898a8d),
+                                    color: const Color(0xff898a8d),
                                     offset: Offset(0 * fem, 1 * fem),
                                     blurRadius: 0 * fem,
                                   ),
@@ -1029,7 +915,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                                       fontWeight: FontWeight.w400,
                                       height: 1.2575 * fem / fem,
                                       letterSpacing: 0.2912249863 * fem,
-                                      color: Color(0xff000000),
+                                      color: const Color(0xff000000),
                                     ),
                                   ),
                                 ),
@@ -1037,11 +923,11 @@ class _NumericKeypadState extends State<OtpVerification> {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                color: Color(0xfffcfcfe),
+                                color: const Color(0xfffcfcfe),
                                 borderRadius: BorderRadius.circular(5 * fem),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xff898a8d),
+                                    color: const Color(0xff898a8d),
                                     offset: Offset(0 * fem, 1 * fem),
                                     blurRadius: 0 * fem,
                                   ),
@@ -1049,7 +935,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                               ),
                               child: Container(
                                 padding: const EdgeInsets.only(right: 39.0),
-                                margin: EdgeInsets.only(left: 30),
+                                margin: const EdgeInsets.only(left: 30),
                                 child: IconButton(
                                   icon: const Icon(Icons.backspace,
                                       size: 30, color: Colors.black),
