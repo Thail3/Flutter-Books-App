@@ -6,20 +6,27 @@ class OtpVerification extends StatefulWidget {
 }
 
 class _NumericKeypadState extends State<OtpVerification> {
-  String currentInput = '';
+  List<String> currentInput = List.filled(6, '-');
 
   void onButtonPressed(String value) {
     setState(() {
-      if (currentInput.length < 6) {
-        currentInput += value;
+      for (int i = 0; i < 6; i++) {
+        if (currentInput[i] == '-') {
+          currentInput[i] = value;
+          break;
+        }
       }
+      // print("Button pressed with value: $value");
     });
   }
 
   void deleteOne() {
     setState(() {
-      if (currentInput.isNotEmpty) {
-        currentInput = currentInput.substring(0, currentInput.length - 1);
+      for (int i = 5; i >= 0; i--) {
+        if (currentInput[i] != '-') {
+          currentInput[i] = '-';
+          break;
+        }
       }
     });
   }
@@ -40,8 +47,32 @@ class _NumericKeypadState extends State<OtpVerification> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 100,
+              height: 60,
             ),
+
+            //! BUTTON BACK
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: IconButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.white),
+                  //shape: MaterialStateProperty.all(CircleBorder()),
+                ),
+                icon: const Icon(
+                  Icons.chevron_left,
+                  size: 30,
+                ),
+                tooltip: 'Back',
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+
+            //! TEXT OTP VERIFICATION
             const Padding(
               padding: EdgeInsets.only(left: 30.0),
               child: Text(
@@ -84,138 +115,168 @@ class _NumericKeypadState extends State<OtpVerification> {
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 33,
             ),
+
+            //! SIX BOX SHOW INPUT NUMBER
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 60,
+                  height: 30,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF7F8F9),
-                        border: Border.all(width: .2, color: Colors.black),
-                        shape: BoxShape.rectangle,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          '-',
-                          style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
+                    for (int i = 0; i < 6; i++)
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF7F8F9),
+                          border: Border.all(width: 0.2, color: Colors.black),
+                          shape: BoxShape.rectangle,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                        ),
+                        child: Center(
+                          child: Text(
+                            currentInput.isNotEmpty ? currentInput[i] : '-',
+                            style: const TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF7F8F9),
-                        border: Border.all(width: .2, color: Colors.black),
-                        shape: BoxShape.rectangle,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          '-',
-                          style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF7F8F9),
-                        border: Border.all(width: .2, color: Colors.black),
-                        shape: BoxShape.rectangle,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          '-',
-                          style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF7F8F9),
-                        border: Border.all(width: .2, color: Colors.black),
-                        shape: BoxShape.rectangle,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          '-',
-                          style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF7F8F9),
-                        border: Border.all(width: .2, color: Colors.black),
-                        shape: BoxShape.rectangle,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          '-',
-                          style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF7F8F9),
-                        border: Border.all(width: .2, color: Colors.black),
-                        shape: BoxShape.rectangle,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          '-',
-                          style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
                   ],
-                )
+                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   crossAxisAlignment: CrossAxisAlignment.center,
+                //   children: [
+                //     Container(
+                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                //       width: 50,
+                //       height: 50,
+                //       decoration: BoxDecoration(
+                //         color: const Color(0xFFF7F8F9),
+                //         border: Border.all(width: .2, color: Colors.black),
+                //         shape: BoxShape.rectangle,
+                //         borderRadius:
+                //             const BorderRadius.all(Radius.circular(10)),
+                //       ),
+                //       child: const Center(
+                //         child: Text(
+                //           '-',
+                //           style: TextStyle(
+                //               fontSize: 24, fontWeight: FontWeight.bold),
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                //       width: 50,
+                //       height: 50,
+                //       decoration: BoxDecoration(
+                //         color: const Color(0xFFF7F8F9),
+                //         border: Border.all(width: .2, color: Colors.black),
+                //         shape: BoxShape.rectangle,
+                //         borderRadius:
+                //             const BorderRadius.all(Radius.circular(10)),
+                //       ),
+                //       child: const Center(
+                //         child: Text(
+                //           '-',
+                //           style: TextStyle(
+                //               fontSize: 24, fontWeight: FontWeight.bold),
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                //       width: 50,
+                //       height: 50,
+                //       decoration: BoxDecoration(
+                //         color: const Color(0xFFF7F8F9),
+                //         border: Border.all(width: .2, color: Colors.black),
+                //         shape: BoxShape.rectangle,
+                //         borderRadius:
+                //             const BorderRadius.all(Radius.circular(10)),
+                //       ),
+                //       child: const Center(
+                //         child: Text(
+                //           '-',
+                //           style: TextStyle(
+                //               fontSize: 24, fontWeight: FontWeight.bold),
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                //       width: 50,
+                //       height: 50,
+                //       decoration: BoxDecoration(
+                //         color: const Color(0xFFF7F8F9),
+                //         border: Border.all(width: .2, color: Colors.black),
+                //         shape: BoxShape.rectangle,
+                //         borderRadius:
+                //             const BorderRadius.all(Radius.circular(10)),
+                //       ),
+                //       child: const Center(
+                //         child: Text(
+                //           '-',
+                //           style: TextStyle(
+                //               fontSize: 24, fontWeight: FontWeight.bold),
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                //       width: 50,
+                //       height: 50,
+                //       decoration: BoxDecoration(
+                //         color: const Color(0xFFF7F8F9),
+                //         border: Border.all(width: .2, color: Colors.black),
+                //         shape: BoxShape.rectangle,
+                //         borderRadius:
+                //             const BorderRadius.all(Radius.circular(10)),
+                //       ),
+                //       child: const Center(
+                //         child: Text(
+                //           '-',
+                //           style: TextStyle(
+                //               fontSize: 24, fontWeight: FontWeight.bold),
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                //       width: 50,
+                //       height: 50,
+                //       decoration: BoxDecoration(
+                //         color: const Color(0xFFF7F8F9),
+                //         border: Border.all(width: .2, color: Colors.black),
+                //         shape: BoxShape.rectangle,
+                //         borderRadius:
+                //             const BorderRadius.all(Radius.circular(10)),
+                //       ),
+                //       child: const Center(
+                //         child: Text(
+                //           '-',
+                //           style: TextStyle(
+                //               fontSize: 24, fontWeight: FontWeight.bold),
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // )
               ],
             ),
+
+            //! TEXT Resent OTP
             const SizedBox(
-              height: 80,
+              height: 70,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -233,8 +294,8 @@ class _NumericKeypadState extends State<OtpVerification> {
                         Text(
                           'Resend OTP',
                           style: TextStyle(
-                            color: Color.fromRGBO(0, 83, 158, 1.0),
-                          ),
+                              color: Color.fromRGBO(0, 83, 158, 1.0),
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -246,7 +307,7 @@ class _NumericKeypadState extends State<OtpVerification> {
               height: 80,
             ),
 
-            //! numPad ---------------------------------
+            //! NumPad ---------------------------------
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -274,34 +335,109 @@ class _NumericKeypadState extends State<OtpVerification> {
                               width: 35,
                             ),
                             Container(
-                              padding: EdgeInsets.fromLTRB(
-                                  52 * fem, 1 * fem, 52 * fem, 1 * fem),
-                              height: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Color(0xfffcfcfe),
-                                borderRadius: BorderRadius.circular(5 * fem),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xff898a8d),
-                                    offset: Offset(0 * fem, 1 * fem),
-                                    blurRadius: 0 * fem,
-                                  ),
-                                ],
-                              ),
-                              child: Text(
-                                '1',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily:
-                                      'SF Pro Display', // Replace with your desired font family
-                                  fontSize: 25 * fem,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.2575 * fem / fem,
-                                  letterSpacing: 0.2912249863 * fem,
-                                  color: Color(0xff000000),
+                                padding: EdgeInsets.fromLTRB(
+                                    52 * fem, 1 * fem, 52 * fem, 1 * fem),
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Color(0xfffcfcfe),
+                                  borderRadius: BorderRadius.circular(5 * fem),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0xff898a8d),
+                                      offset: Offset(0 * fem, 1 * fem),
+                                      blurRadius: 0 * fem,
+                                    ),
+                                  ],
                                 ),
-                              ),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    onButtonPressed("1");
+                                  },
+                                  child: Text(
+                                    '1',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontFamily: 'SF Pro Display',
+                                      fontSize: 25 * fem,
+                                      fontWeight: FontWeight.w400,
+                                      height: 1.2575 * fem / fem,
+                                      letterSpacing: 0.2912249863 * fem,
+                                      color: Color(0xff000000),
+                                    ),
+                                  ),
+                                )),
+                            SizedBox(
+                              width: 6 * fem,
                             ),
+                            Container(
+                                width: 117 * fem,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Color(0xfffcfcfe),
+                                  borderRadius: BorderRadius.circular(5 * fem),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0xff898a8d),
+                                      offset: Offset(0 * fem, 1 * fem),
+                                      blurRadius: 0 * fem,
+                                    ),
+                                  ],
+                                ),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    onButtonPressed("2");
+                                  },
+                                  child: Stack(
+                                    children: [
+                                      Positioned(
+                                        left: 46.5 * fem,
+                                        top: 29 * fem,
+                                        child: Align(
+                                          child: SizedBox(
+                                            width: 24 * fem,
+                                            height: 13 * fem,
+                                            child: Text(
+                                              'ABC',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontFamily: 'SF Pro Display',
+                                                fontSize: 10 * fem,
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.2575 * fem / fem,
+                                                letterSpacing:
+                                                    0.2912249863 * fem,
+                                                color: Color(0xff000000),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        left: 52 * fem,
+                                        top: 1 * fem,
+                                        child: Align(
+                                          child: SizedBox(
+                                            width: 13 * fem,
+                                            height: 32 * fem,
+                                            child: Text(
+                                              '2',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontFamily: 'SF Pro Display',
+                                                fontSize: 25 * fem,
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.2575 * fem / fem,
+                                                letterSpacing:
+                                                    0.2912249863 * fem,
+                                                color: Color(0xff000000),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )),
                             SizedBox(
                               width: 6 * fem,
                             ),
@@ -319,124 +455,60 @@ class _NumericKeypadState extends State<OtpVerification> {
                                   ),
                                 ],
                               ),
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 46.5 * fem,
-                                    top: 29 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 24 * fem,
-                                        height: 13 * fem,
-                                        child: Text(
-                                          'ABC',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 10 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                              child: GestureDetector(
+                                onTap: () {
+                                  onButtonPressed("3");
+                                },
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      left: 46.5 * fem,
+                                      top: 29 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 24 * fem,
+                                          height: 13 * fem,
+                                          child: Text(
+                                            'DEF',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 10 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    left: 52 * fem,
-                                    top: 1 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 13 * fem,
-                                        height: 32 * fem,
-                                        child: Text(
-                                          '2',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 25 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                                    Positioned(
+                                      left: 52 * fem,
+                                      top: 1 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 13 * fem,
+                                          height: 32 * fem,
+                                          child: Text(
+                                            '3',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 25 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 6 * fem,
-                            ),
-                            Container(
-                              width: 117 * fem,
-                              height: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Color(0xfffcfcfe),
-                                borderRadius: BorderRadius.circular(5 * fem),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xff898a8d),
-                                    offset: Offset(0 * fem, 1 * fem),
-                                    blurRadius: 0 * fem,
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    // label7yo (I0:142;272:1730)
-                                    left: 46.5 * fem,
-                                    top: 29 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 24 * fem,
-                                        height: 13 * fem,
-                                        child: Text(
-                                          'DEF',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 10 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 52 * fem,
-                                    top: 1 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 13 * fem,
-                                        height: 32 * fem,
-                                        child: Text(
-                                          '3',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 25 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -444,177 +516,6 @@ class _NumericKeypadState extends State<OtpVerification> {
                             ),
                           ],
                         ),
-                        // child: Row(
-                        //   crossAxisAlignment: CrossAxisAlignment.center,
-                        //   children: [
-                        //     Container(
-                        //       // JzR (I0:142;272:1736)
-                        //       padding: EdgeInsets.fromLTRB(
-                        //           52 * fem, 1 * fem, 52 * fem, 1 * fem),
-                        //       height: double.infinity,
-                        //       decoration: BoxDecoration(
-                        //         color: Color(0xfffcfcfe),
-                        //         borderRadius: BorderRadius.circular(5 * fem),
-                        //         boxShadow: [
-                        //           BoxShadow(
-                        //             color: Color(0xff898a8d),
-                        //             offset: Offset(0 * fem, 1 * fem),
-                        //             blurRadius: 0 * fem,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       child: Text(
-                        //         '1',
-                        //         textAlign: TextAlign.center,
-                        //         style: TextStyle(
-                        //           fontFamily:
-                        //               'SF Pro Display', // Replace with your desired font family
-                        //           fontSize: 10 * fem,
-                        //           fontWeight: FontWeight.w400,
-                        //           height: 1.2575 * fem / fem,
-                        //           letterSpacing: 0.2912249863 * fem,
-                        //           color: Color(0xff000000),
-                        //         ),
-                        //       ),
-                        //     ),
-                        //     SizedBox(
-                        //       width: 6 * fem,
-                        //     ),
-                        //     Container(
-                        //       width: 117 * fem,
-                        //       height: double.infinity,
-                        //       decoration: BoxDecoration(
-                        //         color: Color(0xfffcfcfe),
-                        //         borderRadius: BorderRadius.circular(5 * fem),
-                        //         boxShadow: [
-                        //           BoxShadow(
-                        //             color: Color(0xff898a8d),
-                        //             offset: Offset(0 * fem, 1 * fem),
-                        //             blurRadius: 0 * fem,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       child: Stack(
-                        //         children: [
-                        //           Positioned(
-                        //             left: 46.5 * fem,
-                        //             top: 29 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 24 * fem,
-                        //                 height: 13 * fem,
-                        //                 child: Text(
-                        //                   'ABC',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //           Positioned(
-                        //             left: 52 * fem,
-                        //             top: 1 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 13 * fem,
-                        //                 height: 32 * fem,
-                        //                 child: Text(
-                        //                   '2',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //     SizedBox(
-                        //       width: 6 * fem,
-                        //     ),
-                        //     Container(
-                        //       width: 117 * fem,
-                        //       height: double.infinity,
-                        //       decoration: BoxDecoration(
-                        //         color: Color(0xfffcfcfe),
-                        //         borderRadius: BorderRadius.circular(5 * fem),
-                        //         boxShadow: [
-                        //           BoxShadow(
-                        //             color: Color(0xff898a8d),
-                        //             offset: Offset(0 * fem, 1 * fem),
-                        //             blurRadius: 0 * fem,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       child: Stack(
-                        //         children: [
-                        //           Positioned(
-                        //             left: 46.5 * fem,
-                        //             top: 29 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 24 * fem,
-                        //                 height: 13 * fem,
-                        //                 child: Text(
-                        //                   'DEF',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //           Positioned(
-                        //             left: 52 * fem,
-                        //             top: 1 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 13 * fem,
-                        //                 height: 32 * fem,
-                        //                 child: Text(
-                        //                   '3',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
                       ),
                       SizedBox(
                         height: 7 * fem,
@@ -642,55 +543,60 @@ class _NumericKeypadState extends State<OtpVerification> {
                                   ),
                                 ],
                               ),
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 46.5 * fem,
-                                    top: 29 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 24 * fem,
-                                        height: 13 * fem,
-                                        child: Text(
-                                          'GHI',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 10 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                              child: GestureDetector(
+                                onTap: () {
+                                  onButtonPressed("4");
+                                },
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      left: 46.5 * fem,
+                                      top: 29 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 24 * fem,
+                                          height: 13 * fem,
+                                          child: Text(
+                                            'GHI',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 10 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    left: 52 * fem,
-                                    top: 1 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 13 * fem,
-                                        height: 32 * fem,
-                                        child: Text(
-                                          '4',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 25 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                                    Positioned(
+                                      left: 52 * fem,
+                                      top: 1 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 13 * fem,
+                                          height: 32 * fem,
+                                          child: Text(
+                                            '4',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 25 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -710,55 +616,60 @@ class _NumericKeypadState extends State<OtpVerification> {
                                   ),
                                 ],
                               ),
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 46.5 * fem,
-                                    top: 29 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 24 * fem,
-                                        height: 13 * fem,
-                                        child: Text(
-                                          'JKL',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 10 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                              child: GestureDetector(
+                                onTap: () {
+                                  onButtonPressed("5");
+                                },
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      left: 46.5 * fem,
+                                      top: 29 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 24 * fem,
+                                          height: 13 * fem,
+                                          child: Text(
+                                            'JKL',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 10 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    left: 52 * fem,
-                                    top: 1 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 13 * fem,
-                                        height: 32 * fem,
-                                        child: Text(
-                                          '5',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 25 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                                    Positioned(
+                                      left: 52 * fem,
+                                      top: 1 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 13 * fem,
+                                          height: 32 * fem,
+                                          child: Text(
+                                            '5',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 25 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -778,56 +689,61 @@ class _NumericKeypadState extends State<OtpVerification> {
                                   ),
                                 ],
                               ),
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    // label7yo (I0:142;272:1730)
-                                    left: 46.5 * fem,
-                                    top: 29 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 24 * fem,
-                                        height: 13 * fem,
-                                        child: Text(
-                                          'MNO',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 10 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                              child: GestureDetector(
+                                onTap: () {
+                                  onButtonPressed("6");
+                                },
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      // label7yo (I0:142;272:1730)
+                                      left: 46.5 * fem,
+                                      top: 29 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 24 * fem,
+                                          height: 13 * fem,
+                                          child: Text(
+                                            'MNO',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 10 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    left: 52 * fem,
-                                    top: 1 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 13 * fem,
-                                        height: 32 * fem,
-                                        child: Text(
-                                          '6',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 25 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                                    Positioned(
+                                      left: 52 * fem,
+                                      top: 1 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 13 * fem,
+                                          height: 32 * fem,
+                                          child: Text(
+                                            '6',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 25 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -835,212 +751,6 @@ class _NumericKeypadState extends State<OtpVerification> {
                             ),
                           ],
                         ),
-                        // child: Row(
-                        //   crossAxisAlignment: CrossAxisAlignment.center,
-                        //   children: [
-                        //     Container(
-                        //       width: 117 * fem,
-                        //       height: double.infinity,
-                        //       decoration: BoxDecoration(
-                        //         color: Color(0xfffcfcfe),
-                        //         borderRadius: BorderRadius.circular(5 * fem),
-                        //         boxShadow: [
-                        //           BoxShadow(
-                        //             color: Color(0xff898a8d),
-                        //             offset: Offset(0 * fem, 1 * fem),
-                        //             blurRadius: 0 * fem,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       child: Stack(
-                        //         children: [
-                        //           Positioned(
-                        //             left: 47 * fem,
-                        //             top: 29.6304321289 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 23 * fem,
-                        //                 height: 13 * fem,
-                        //                 child: Text(
-                        //                   'GHI',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //           Positioned(
-                        //             left: 52 * fem,
-                        //             top: 1.0217437744 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 13 * fem,
-                        //                 height: 32 * fem,
-                        //                 child: Text(
-                        //                   '4',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //     SizedBox(
-                        //       width: 6 * fem,
-                        //     ),
-                        //     Container(
-                        //       width: 117 * fem,
-                        //       height: double.infinity,
-                        //       decoration: BoxDecoration(
-                        //         color: Color(0xfffcfcfe),
-                        //         borderRadius: BorderRadius.circular(5 * fem),
-                        //         boxShadow: [
-                        //           BoxShadow(
-                        //             color: Color(0xff898a8d),
-                        //             offset: Offset(0 * fem, 1 * fem),
-                        //             blurRadius: 0 * fem,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       child: Stack(
-                        //         children: [
-                        //           Positioned(
-                        //             left: 47 * fem,
-                        //             top: 29.6304321289 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 23 * fem,
-                        //                 height: 13 * fem,
-                        //                 child: Text(
-                        //                   'JKL',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //           Positioned(
-                        //             left: 52 * fem,
-                        //             top: 1.0217437744 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 13 * fem,
-                        //                 height: 32 * fem,
-                        //                 child: Text(
-                        //                   '5',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //     SizedBox(
-                        //       width: 6 * fem,
-                        //     ),
-                        //     Container(
-                        //       width: 117 * fem,
-                        //       height: double.infinity,
-                        //       decoration: BoxDecoration(
-                        //         color: Color(0xfffcfcfe),
-                        //         borderRadius: BorderRadius.circular(5 * fem),
-                        //         boxShadow: [
-                        //           BoxShadow(
-                        //             color: Color(0xff898a8d),
-                        //             offset: Offset(0 * fem, 1 * fem),
-                        //             blurRadius: 0 * fem,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       child: Stack(
-                        //         children: [
-                        //           Positioned(
-                        //             left: 44.5 * fem,
-                        //             top: 29.6304321289 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 28 * fem,
-                        //                 height: 13 * fem,
-                        //                 child: Text(
-                        //                   'MNO',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //           Positioned(
-                        //             left: 52 * fem,
-                        //             top: 1.0217437744 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 13 * fem,
-                        //                 height: 32 * fem,
-                        //                 child: Text(
-                        //                   '6',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
                       ),
                       SizedBox(
                         height: 7 * fem,
@@ -1068,55 +778,60 @@ class _NumericKeypadState extends State<OtpVerification> {
                                   ),
                                 ],
                               ),
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 46.5 * fem,
-                                    top: 29 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 24 * fem,
-                                        height: 13 * fem,
-                                        child: Text(
-                                          'PQRS',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 10 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                              child: GestureDetector(
+                                onTap: () {
+                                  onButtonPressed("7");
+                                },
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      left: 46.5 * fem,
+                                      top: 29 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 24 * fem,
+                                          height: 13 * fem,
+                                          child: Text(
+                                            'PQRS',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 10 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    left: 52 * fem,
-                                    top: 1 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 13 * fem,
-                                        height: 32 * fem,
-                                        child: Text(
-                                          '7',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 25 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                                    Positioned(
+                                      left: 52 * fem,
+                                      top: 1 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 13 * fem,
+                                          height: 32 * fem,
+                                          child: Text(
+                                            '7',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 25 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -1136,55 +851,60 @@ class _NumericKeypadState extends State<OtpVerification> {
                                   ),
                                 ],
                               ),
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 46.5 * fem,
-                                    top: 29 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 24 * fem,
-                                        height: 13 * fem,
-                                        child: Text(
-                                          'TUV',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 10 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                              child: GestureDetector(
+                                onTap: () {
+                                  onButtonPressed("8");
+                                },
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      left: 46.5 * fem,
+                                      top: 29 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 24 * fem,
+                                          height: 13 * fem,
+                                          child: Text(
+                                            'TUV',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 10 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    left: 52 * fem,
-                                    top: 1 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 13 * fem,
-                                        height: 32 * fem,
-                                        child: Text(
-                                          '8',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 25 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                                    Positioned(
+                                      left: 52 * fem,
+                                      top: 1 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 13 * fem,
+                                          height: 32 * fem,
+                                          child: Text(
+                                            '8',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 25 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -1204,56 +924,61 @@ class _NumericKeypadState extends State<OtpVerification> {
                                   ),
                                 ],
                               ),
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    // label7yo (I0:142;272:1730)
-                                    left: 46.5 * fem,
-                                    top: 29 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 24 * fem,
-                                        height: 13 * fem,
-                                        child: Text(
-                                          'WXYZ',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 10 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                              child: GestureDetector(
+                                onTap: () {
+                                  onButtonPressed("9");
+                                },
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      // label7yo (I0:142;272:1730)
+                                      left: 46.5 * fem,
+                                      top: 29 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 24 * fem,
+                                          height: 13 * fem,
+                                          child: Text(
+                                            'WXYZ',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 10 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    left: 52 * fem,
-                                    top: 1 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 13 * fem,
-                                        height: 32 * fem,
-                                        child: Text(
-                                          '9',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily:
-                                                'SF Pro Display', // Replace with your desired font family
-                                            fontSize: 25 * fem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2575 * fem / fem,
-                                            letterSpacing: 0.2912249863 * fem,
-                                            color: Color(0xff000000),
+                                    Positioned(
+                                      left: 52 * fem,
+                                      top: 1 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 13 * fem,
+                                          height: 32 * fem,
+                                          child: Text(
+                                            '9',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  'SF Pro Display', // Replace with your desired font family
+                                              fontSize: 25 * fem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2575 * fem / fem,
+                                              letterSpacing: 0.2912249863 * fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -1261,219 +986,13 @@ class _NumericKeypadState extends State<OtpVerification> {
                             ),
                           ],
                         ),
-                        // child: Row(
-                        //   crossAxisAlignment: CrossAxisAlignment.center,
-                        //   children: [
-                        //     Container(
-                        //       width: 117 * fem,
-                        //       height: double.infinity,
-                        //       decoration: BoxDecoration(
-                        //         color: Color(0xfffcfcfe),
-                        //         borderRadius: BorderRadius.circular(5 * fem),
-                        //         boxShadow: [
-                        //           BoxShadow(
-                        //             color: Color(0xff898a8d),
-                        //             offset: Offset(0 * fem, 1 * fem),
-                        //             blurRadius: 0 * fem,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       child: Stack(
-                        //         children: [
-                        //           Positioned(
-                        //             left: 42 * fem,
-                        //             top: 29.6304321289 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 33 * fem,
-                        //                 height: 13 * fem,
-                        //                 child: Text(
-                        //                   'PQRS',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //           Positioned(
-                        //             left: 52 * fem,
-                        //             top: 1.0217437744 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 13 * fem,
-                        //                 height: 32 * fem,
-                        //                 child: Text(
-                        //                   '7',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //     SizedBox(
-                        //       width: 6 * fem,
-                        //     ),
-                        //     Container(
-                        //       width: 117 * fem,
-                        //       height: double.infinity,
-                        //       decoration: BoxDecoration(
-                        //         color: Color(0xfffcfcfe),
-                        //         borderRadius: BorderRadius.circular(5 * fem),
-                        //         boxShadow: [
-                        //           BoxShadow(
-                        //             color: Color(0xff898a8d),
-                        //             offset: Offset(0 * fem, 1 * fem),
-                        //             blurRadius: 0 * fem,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       child: Stack(
-                        //         children: [
-                        //           Positioned(
-                        //             left: 46.5 * fem,
-                        //             top: 29.6304321289 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 24 * fem,
-                        //                 height: 13 * fem,
-                        //                 child: Text(
-                        //                   'TUV',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //           Positioned(
-                        //             left: 52 * fem,
-                        //             top: 1.0217437744 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 13 * fem,
-                        //                 height: 32 * fem,
-                        //                 child: Text(
-                        //                   '8',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //     SizedBox(
-                        //       width: 6 * fem,
-                        //     ),
-                        //     Container(
-                        //       width: 117 * fem,
-                        //       height: double.infinity,
-                        //       decoration: BoxDecoration(
-                        //         color: Color(0xfffcfcfe),
-                        //         borderRadius: BorderRadius.circular(5 * fem),
-                        //         boxShadow: [
-                        //           BoxShadow(
-                        //             color: Color(0xff898a8d),
-                        //             offset: Offset(0 * fem, 1 * fem),
-                        //             blurRadius: 0 * fem,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       child: Stack(
-                        //         children: [
-                        //           Positioned(
-                        //             left: 42 * fem,
-                        //             top: 29.6304321289 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 33 * fem,
-                        //                 height: 13 * fem,
-                        //                 child: Text(
-                        //                   'WXYZ',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //           Positioned(
-                        //             left: 52 * fem,
-                        //             top: 1.0217437744 * fem,
-                        //             child: Align(
-                        //               child: SizedBox(
-                        //                 width: 13 * fem,
-                        //                 height: 32 * fem,
-                        //                 child: Text(
-                        //                   '9',
-                        //                   textAlign: TextAlign.center,
-                        //                   style: TextStyle(
-                        //                     fontFamily:
-                        //                         'SF Pro Display', // Replace with your desired font family
-                        //                     fontSize: 10 * fem,
-                        //                     fontWeight: FontWeight.w400,
-                        //                     height: 1.2575 * fem / fem,
-                        //                     letterSpacing: 0.2912249863 * fem,
-                        //                     color: Color(0xff000000),
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
                       ),
                       SizedBox(
                         height: 7 * fem,
                       ),
                       Container(
                         margin: EdgeInsets.fromLTRB(
-                            160 * fem, 0 * fem, 44 * fem, 0 * fem),
+                            160 * fem, 0 * fem, 0 * fem, 0 * fem),
                         width: double.infinity,
                         height: 46 * fem,
                         child: Row(
@@ -1481,7 +1000,7 @@ class _NumericKeypadState extends State<OtpVerification> {
                           children: [
                             Container(
                               margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 0 * fem, 55 * fem, 0 * fem),
+                                  0 * fem, 0 * fem, 5 * fem, 0 * fem),
                               width: 117 * fem,
                               height: double.infinity,
                               decoration: BoxDecoration(
@@ -1496,21 +1015,50 @@ class _NumericKeypadState extends State<OtpVerification> {
                                 ],
                               ),
                               child: Center(
-                                child: Text(
-                                  '0',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontFamily:
-                                        'SF Pro Display', // Replace with your desired font family
-                                    fontSize: 25 * fem,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.2575 * fem / fem,
-                                    letterSpacing: 0.2912249863 * fem,
-                                    color: Color(0xff000000),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    onButtonPressed("0");
+                                  },
+                                  child: Text(
+                                    '0',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontFamily:
+                                          'SF Pro Display', // Replace with your desired font family
+                                      fontSize: 25 * fem,
+                                      fontWeight: FontWeight.w400,
+                                      height: 1.2575 * fem / fem,
+                                      letterSpacing: 0.2912249863 * fem,
+                                      color: Color(0xff000000),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xfffcfcfe),
+                                borderRadius: BorderRadius.circular(5 * fem),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0xff898a8d),
+                                    offset: Offset(0 * fem, 1 * fem),
+                                    blurRadius: 0 * fem,
+                                  ),
+                                ],
+                              ),
+                              child: Container(
+                                padding: const EdgeInsets.only(right: 39.0),
+                                margin: EdgeInsets.only(left: 30),
+                                child: IconButton(
+                                  icon: const Icon(Icons.backspace,
+                                      size: 30, color: Colors.black),
+                                  onPressed: () {
+                                    deleteOne();
+                                  },
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -1519,240 +1067,6 @@ class _NumericKeypadState extends State<OtpVerification> {
                 ),
               ],
             ),
-
-            //! NumPad
-            // Column(
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //   children: [
-            //     Container(
-            //       decoration: const BoxDecoration(
-            //         color: Color(0xffd1d5db),
-            //       ),
-            // child: Container(
-            //   margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-            //   width: double.infinity,
-            //   child: Column(
-            //     crossAxisAlignment: CrossAxisAlignment.center,
-            //     children: [
-            //       Container(
-            //         alignment: Alignment.center,
-            //         width: double.infinity,
-            //         height: 46 * fem,
-
-            //Todo this line
-            // child: Row(
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //   children: [
-            //     const SizedBox(
-            //       width: 35,
-            //     ),
-            //     Container(
-            //       padding: EdgeInsets.fromLTRB(
-            //           52 * fem, 1 * fem, 52 * fem, 1 * fem),
-            //       height: double.infinity,
-            //       decoration: BoxDecoration(
-            //         color: Color(0xfffcfcfe),
-            //         borderRadius: BorderRadius.circular(5 * fem),
-            //         boxShadow: [
-            //           BoxShadow(
-            //             color: Color(0xff898a8d),
-            //             offset: Offset(0 * fem, 1 * fem),
-            //             blurRadius: 0 * fem,
-            //           ),
-            //         ],
-            //       ),
-            //       child: Text(
-            //         '1',
-            //         textAlign: TextAlign.center,
-            //         style: TextStyle(
-            //           fontFamily:
-            //               'SF Pro Display', // Replace with your desired font family
-            //           fontSize: 25 * fem,
-            //           fontWeight: FontWeight.w400,
-            //           height: 1.2575 * fem / fem,
-            //           letterSpacing: 0.2912249863 * fem,
-            //           color: Color(0xff000000),
-            //         ),
-            //       ),
-            //     ),
-            //     SizedBox(
-            //       width: 6 * fem,
-            //     ),
-            //     Container(
-            //       width: 117 * fem,
-            //       height: double.infinity,
-            //       decoration: BoxDecoration(
-            //         color: Color(0xfffcfcfe),
-            //         borderRadius: BorderRadius.circular(5 * fem),
-            //         boxShadow: [
-            //           BoxShadow(
-            //             color: Color(0xff898a8d),
-            //             offset: Offset(0 * fem, 1 * fem),
-            //             blurRadius: 0 * fem,
-            //           ),
-            //         ],
-            //       ),
-            //       child: Stack(
-            //         children: [
-            //           Positioned(
-            //             left: 46.5 * fem,
-            //             top: 29 * fem,
-            //             child: Align(
-            //               child: SizedBox(
-            //                 width: 24 * fem,
-            //                 height: 13 * fem,
-            //                 child: Text(
-            //                   'ABC',
-            //                   textAlign: TextAlign.center,
-            //                   style: TextStyle(
-            //                     fontFamily:
-            //                         'SF Pro Display', // Replace with your desired font family
-            //                     fontSize: 10 * fem,
-            //                     fontWeight: FontWeight.w400,
-            //                     height: 1.2575 * fem / fem,
-            //                     letterSpacing: 0.2912249863 * fem,
-            //                     color: Color(0xff000000),
-            //                   ),
-            //                 ),
-            //               ),
-            //             ),
-            //           ),
-            //           Positioned(
-            //             left: 52 * fem,
-            //             top: 1 * fem,
-            //             child: Align(
-            //               child: SizedBox(
-            //                 width: 13 * fem,
-            //                 height: 32 * fem,
-            //                 child: Text(
-            //                   '2',
-            //                   textAlign: TextAlign.center,
-            //                   style: TextStyle(
-            //                     fontFamily:
-            //                         'SF Pro Display', // Replace with your desired font family
-            //                     fontSize: 25 * fem,
-            //                     fontWeight: FontWeight.w400,
-            //                     height: 1.2575 * fem / fem,
-            //                     letterSpacing: 0.2912249863 * fem,
-            //                     color: Color(0xff000000),
-            //                   ),
-            //                 ),
-            //               ),
-            //             ),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //     SizedBox(
-            //       width: 6 * fem,
-            //     ),
-            //     Container(
-            //       width: 117 * fem,
-            //       height: double.infinity,
-            //       decoration: BoxDecoration(
-            //         color: Color(0xfffcfcfe),
-            //         borderRadius: BorderRadius.circular(5 * fem),
-            //         boxShadow: [
-            //           BoxShadow(
-            //             color: Color(0xff898a8d),
-            //             offset: Offset(0 * fem, 1 * fem),
-            //             blurRadius: 0 * fem,
-            //           ),
-            //         ],
-            //       ),
-            //       child: Stack(
-            //         children: [
-            //           Positioned(
-            //             // label7yo (I0:142;272:1730)
-            //             left: 46.5 * fem,
-            //             top: 29 * fem,
-            //             child: Align(
-            //               child: SizedBox(
-            //                 width: 24 * fem,
-            //                 height: 13 * fem,
-            //                 child: Text(
-            //                   'DEF',
-            //                   textAlign: TextAlign.center,
-            //                   style: TextStyle(
-            //                     fontFamily:
-            //                         'SF Pro Display', // Replace with your desired font family
-            //                     fontSize: 10 * fem,
-            //                     fontWeight: FontWeight.w400,
-            //                     height: 1.2575 * fem / fem,
-            //                     letterSpacing: 0.2912249863 * fem,
-            //                     color: Color(0xff000000),
-            //                   ),
-            //                 ),
-            //               ),
-            //             ),
-            //           ),
-            //           Positioned(
-            //             left: 52 * fem,
-            //             top: 1 * fem,
-            //             child: Align(
-            //               child: SizedBox(
-            //                 width: 13 * fem,
-            //                 height: 32 * fem,
-            //                 child: Text(
-            //                   '3',
-            //                   textAlign: TextAlign.center,
-            //                   style: TextStyle(
-            //                     fontFamily:
-            //                         'SF Pro Display', // Replace with your desired font family
-            //                     fontSize: 25 * fem,
-            //                     fontWeight: FontWeight.w400,
-            //                     height: 1.2575 * fem / fem,
-            //                     letterSpacing: 0.2912249863 * fem,
-            //                     color: Color(0xff000000),
-            //                   ),
-            //                 ),
-            //               ),
-            //             ),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //     SizedBox(
-            //       height: 7 * fem,
-            //     ),
-            //   ],
-            // ),
-            //! -------------------
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // )
-            // ],
-            // ),
-            // Column(
-            //   children: [
-            //     GridView.builder(
-            //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //           crossAxisCount: 3,
-            //         ),
-            //         itemCount: 10,
-            //         shrinkWrap: true,
-            //         itemBuilder: (BuildContext context, int index) {
-            //           if (index == 9) {
-            //             return TextButton(
-            //               onPressed: () {
-            //                 onButtonPressed('0');
-            //               },
-            //               child: Text('0', style: TextStyle(fontSize: 5.0)),
-            //             );
-            //           } else {
-            //             return TextButton(
-            //               onPressed: () {
-            //                 onButtonPressed((index + 1).toString());
-            //               },
-            //               child: Text((index + 1).toString(),
-            //                   style: TextStyle(fontSize: 20.0)),
-            //             );
-            //           }
-            //         })
-            //   ],
-            // ),
           ],
         ),
       ),
